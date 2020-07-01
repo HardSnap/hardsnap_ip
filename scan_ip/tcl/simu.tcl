@@ -50,7 +50,9 @@ set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {PASS_
 set_property -dict [list CONFIG.Input_Data_Width {32} CONFIG.Output_Data_Width {32} CONFIG.Reset_Pin {false} CONFIG.Reset_Type {Asynchronous_Reset} CONFIG.Use_Dout_Reset {false} CONFIG.Almost_Full_Flag {true}] [get_bd_cells fifo_generator_t0]
 set_property -dict [list CONFIG.Input_Data_Width {32} CONFIG.Output_Data_Width {32} CONFIG.Reset_Pin {false} CONFIG.Reset_Type {Asynchronous_Reset} CONFIG.Use_Dout_Reset {false} CONFIG.Almost_Full_Flag {true}] [get_bd_cells fifo_generator_t1]
 
-create_bd_port -dir O -type clk aclk
+#create_bd_port -dir O -type clk aclk
+make_bd_pins_external  [get_bd_pins axi_vip_0/aclk]
+set_property name aclk [get_bd_ports aclk_0]
 create_bd_port -dir O -type reset aresetn
 
 create_bd_port -dir I scan_output
@@ -65,7 +67,7 @@ connect_bd_net [get_bd_ports scan_enable] [get_bd_pins t0/scan_enable]
 
 connect_bd_net [get_bd_ports aclk] [get_bd_pins t0/aclk]
 connect_bd_net [get_bd_ports aresetn] [get_bd_pins t0/aresetn]
-connect_bd_net [get_bd_ports aclk] [get_bd_pins axi_vip_0/aclk]
+#connect_bd_net [get_bd_ports aclk] [get_bd_pins axi_vip_0/aclk]
 connect_bd_net [get_bd_ports aresetn] [get_bd_pins axi_vip_0/aresetn]
 connect_bd_net [get_bd_ports aclk] [get_bd_pins fifo_generator_t0/clk]
 connect_bd_net [get_bd_ports aclk] [get_bd_pins fifo_generator_t1/clk]
@@ -87,15 +89,15 @@ connect_bd_net [get_bd_pins fifo_generator_t1/empty] [get_bd_pins t0/empty_t1]
 connect_bd_net [get_bd_pins fifo_generator_t1/rd_en] [get_bd_pins t0/rd_en_t1]
 connect_bd_net [get_bd_pins fifo_generator_t1/dout] [get_bd_pins t0/data_out_t1]
 
-assign_bd_address [get_bd_addr_segs {axi_vip_0/S_AXI/Reg }]
-set_property offset 0x00000000 [get_bd_addr_segs {axi_vip_0/Master_AXI/SEG_t0_reg0}]
-set_property range 4G [get_bd_addr_segs {axi_vip_0/Master_AXI/SEG_t0_reg0}]
-
 make_wrapper -files [get_files $builddir/top.srcs/sources_1/bd/top/top.bd] -top
 add_files -norecurse $builddir/top.srcs/sources_1/bd/top/hdl/top_wrapper.v
 
+#assign_bd_address [get_bd_addr_segs {axi_vip_0/S_AXI/Reg }]
+#set_property offset 0x00000000 [get_bd_addr_segs {axi_vip_0/Master_AXI/SEG_t0_reg0}]
+#set_property range 4G [get_bd_addr_segs {axi_vip_0/Master_AXI/SEG_t0_reg0}]
+
 set_property SOURCE_SET sources_1 [get_filesets sim_1]
-add_files -fileset sim_1 -norecurse $builddir/../tb/testbench.sv
+add_files -fileset sim_1 -norecurse $builddir/../../tb/testbench.sv
 update_compile_order -fileset sim_1
 
 save_bd_design
