@@ -3,32 +3,32 @@
 
 	module scanner #
 	(
+		// Users to add parameters here
+
+		// User parameters ends
+		// Do not modify the parameters beyond this line
+
+
+		// Parameters of Axi Slave Bus Interface S00_AXI
 		parameter integer C_S00_AXI_DATA_WIDTH	= 32,
 		parameter integer C_S00_AXI_ADDR_WIDTH	= 5,
+
+		// Parameters of Axi Master Bus Interface M00_AXI
 		parameter integer C_M00_AXI_ADDR_WIDTH	= 32,
 		parameter integer C_M00_AXI_DATA_WIDTH	= 32
 	)
 	(
-    // scan-chain signals
-    input wire scan_output,
-    output wire scan_ck_en,
-    output wire scan_input,
-    output wire scan_enable,
+		// Users to add ports here
+        input wire scan_output,
+        output wire scan_ck_en,
+        output wire scan_input,
+        output wire scan_enable,
+        
+        output wire interrupt,
 
-    // FIFO 
-    input wire [31:0] data_in_t1,
-    input wire almost_full_t1,
-    input wire empty_t1,
-    output wire rd_en_t1,
-    output wire wr_en_t1,
-    output wire [31:0] data_out_t1,
+		// User ports ends
+		// Do not modify the ports beyond this line
 
-    input wire empty_t0,
-    input wire [31:0] data_in_t0,
-    input wire almost_full_t0,
-    output wire rd_en_t0,
-    output wire wr_en_t0,
-    output wire [31:0] data_out_t0,
 
 		// Ports of Axi Slave Bus Interface S00_AXI
 		input wire  s00_axi_aclk,
@@ -77,32 +77,31 @@
 		output wire  m00_axi_rready
 	);
 
-  wire [31:0] address_src;
-  wire [31:0] address_dst;
-  wire start;
-  wire [15:0] length;
-  wire done;
+    wire cs_ready;
+    wire [31:0] cs_address;
+    wire cs_is_read;
+    wire cs_busy;
+    wire cs_done;
+    wire [31:0] axi_data_in;
+    wire [31:0] axi_data_out;
+    wire cs_error;
 
-  wire start;
-  reg start_r;
-  wire start_pulse;
+    wire [31:0] scan_address_src;
+    wire [31:0] scan_address_dst;
+    wire scan_start;
+    wire [31:0] scan_length;
+    wire scan_done;
 
-  // wait a pulse to start shifting the scan-chain 
-  always @(posedge aclk)
-      start_r    <= start;
-  
-  assign start_pulse = start_r & ~start;
-
-  // Instantiation of Axi Bus Interface S00_AXI
-  axi_slave # ( 
+// Instantiation of Axi Bus Interface S00_AXI
+	fast_ip_scanner_v1_0_S00_AXI # ( 
 		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
 		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
-	) axi_slave_inst (
-    .address_src(address_src),
-    .address_dst(address_dst),
-    .start(start),
-    .length(length),
-    .done(done),
+	) fast_ip_scanner_v1_0_S00_AXI_inst (
+        .scan_address_src(scan_address_src),
+        .scan_address_dst(scan_address_dst),
+        .scan_start(scan_start),
+        .scan_length(scan_length),
+        .scan_done(scan_done),
 		.S_AXI_ACLK(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),
 		.S_AXI_AWADDR(s00_axi_awaddr),
@@ -127,23 +126,19 @@
 	);
 
 // Instantiation of Axi Bus Interface M00_AXI
-	axi_master # ( 
+	fast_ip_scanner_v1_0_M00_AXI # ( 
 		.C_M_AXI_ADDR_WIDTH(C_M00_AXI_ADDR_WIDTH),
 		.C_M_AXI_DATA_WIDTH(C_M00_AXI_DATA_WIDTH)
-	) axi_master_inst (
-		.start(start_pulse),
-    .address_src(address_src),
-    .address_dst(address_dst),
-    .length(length),
-    //FIFO
-    .rd_en(rd_en_t1),
-    .data_in(data_in_t1),
-    .almost_full(almost_full_t1),
-    .wr_en(wr_en_t0),
-    .data_out(data_out_t0),
-    .empty(empty_t0),
-    //AXI Master
-    .M_AXI_ACLK(m00_axi_aclk),
+	) fast_ip_scanner_v1_0_M00_AXI_inst (
+        .cs_ready(cs_ready),
+        .cs_address(cs_address),
+        .cs_data_i(axi_data_in),
+        .cs_is_read(cs_is_read),
+        .cs_busy(cs_busy),
+        .cs_done(cs_done),
+        .cs_data_o(axi_data_out),
+		.ERROR(cs_error),
+		.M_AXI_ACLK(m00_axi_aclk),
 		.M_AXI_ARESETN(m00_axi_aresetn),
 		.M_AXI_AWADDR(m00_axi_awaddr),
 		.M_AXI_AWPROT(m00_axi_awprot),
@@ -166,27 +161,58 @@
 		.M_AXI_RREADY(m00_axi_rready)
 	);
 
-  scan scan_inst(
-    // Common Signals
-	  .aclk(m00_axi_aclk),
-	  .aresetn(m00_axi_aresetn),
-    // FIFO
-    .rd_en(rd_en_t0),
-    .data_in(data_in_t0),
-    .almost_full(almost_full_t0),
-    .wr_en(wr_en_t1),
-    .data_out(data_out_t1),
-    .empty(empty_t1),
-    // User-configuration
-    .start(start),
-    .length(length),
-    .done(done),
-    // Scan Signals
-    .scan_output(scan_output),
-    .scan_input(scan_input),
-    .scan_enable(scan_enable)
-    .scan_en_clk(scan_ck_en),
-  );
+	// Add user logic here
+ /*   scan_core scan_core_inst(
+        // Common Signals
+		.aclk(m00_axi_aclk),
+		.aresetn(m00_axi_aresetn),
+        // User-configuration
+        ._scan_address_src(scan_address_src),
+        ._scan_address_dst(scan_address_dst),
+        .scan_start(scan_start),
+        .scan_length(scan_length),
+        .p_scan_done(scan_done),
+        // Scan Signals
+        .scan_output(scan_output),
+        .p_scan_en_clk(scan_ck_en),
+        .p_scan_input(scan_input),
+        .p_scan_enable(scan_enable),
+        // Interface with the AXI Master
+        .cs_ready(cs_ready),
+        .cs_address(cs_address),
+        .cs_data_i(cs_data_i),
+        .cs_is_read(cs_is_read),
+        .cs_done(cs_done),
+        .cs_data_o(cs_data_o),
+        .cs_busy(cs_busy)
+    );*/
+
+
+    scan_core_fifo scan_core_fifo_inst(
+        // Common Signals
+		.aclk(m00_axi_aclk),
+		.aresetn(m00_axi_aresetn),
+		.interrupt(interrupt),
+        // User-configuration
+        ._scan_address_src(scan_address_src),
+        ._scan_address_dst(scan_address_dst),
+        .scan_start(scan_start),
+        .scan_length(scan_length),
+        .p_scan_done(scan_done),
+        // Scan Signals
+        .scan_output(scan_output),
+        .p_scan_en_clk(scan_ck_en),
+        .p_scan_input(scan_input),
+        .p_scan_enable(scan_enable),
+        // Interface with the AXI Master
+        .cs_ready(cs_ready),
+        .cs_address(cs_address),
+        .cs_data_i(axi_data_out),
+        .cs_is_read(cs_is_read),
+        .cs_done(cs_done),
+        .cs_data_o(axi_data_in),
+        .cs_busy(cs_busy)
+    );
 	// User logic ends
 
 	endmodule
