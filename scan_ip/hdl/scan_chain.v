@@ -35,7 +35,7 @@ parameter [2:0] IDLE  = 3'b001,
   reg [31:0] scan_output_reg;
   reg [31:0] scan_input_reg;
 
-  wire done;
+  wire chunck_done;
 
   // increment the scan_output_index and flop the scan_output signal
   always @(posedge aclk, posedge aresetn)

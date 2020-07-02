@@ -10,7 +10,7 @@ module axi_master #
 
   input wire [31:0] address_dst,
   input wire [31:0] address_src,
-  input wire [31:0] length, 
+  input wire [15:0] length, 
 
   output wire rd_en,
   input wire [31:0] data_in,

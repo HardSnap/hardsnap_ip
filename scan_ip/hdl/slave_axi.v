@@ -9,7 +9,7 @@
 	(
     output wire [31:0] address_src,
     output wire [31:0] address_dst,
-    output wire [31:0] length,
+    output wire [15:0] length,
     output wire start,
     input wire done,
 

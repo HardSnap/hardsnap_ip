@@ -82,7 +82,6 @@
   wire [15:0] length;
   wire done;
 
-  wire start;
   reg start_r;
   wire start_pulse;
 
