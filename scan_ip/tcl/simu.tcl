@@ -40,12 +40,15 @@ create_bd_design "$top"
 
 create_bd_cell -type ip -vlnv www.eurecom.fr:ip:scanner:1.0 t0
 create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vip:1.1 axi_vip_0
+create_bd_cell -type ip -vlnv xilinx.com:ip:axi_vip:1.1 axi_vip_1
 create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_t0
 create_bd_cell -type ip -vlnv xilinx.com:ip:fifo_generator:13.2 fifo_generator_t1
 
-set_property -dict [list CONFIG.PROTOCOL {AXI4LITE}] [get_bd_cells axi_vip_0]
 set_property -dict [list CONFIG.PROTOCOL.VALUE_SRC USER] [get_bd_cells axi_vip_0]
-set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {PASS_THROUGH}] [get_bd_cells axi_vip_0]
+set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {SLAVE}] [get_bd_cells axi_vip_0]
+
+set_property -dict [list CONFIG.PROTOCOL.VALUE_SRC USER] [get_bd_cells axi_vip_1]
+set_property -dict [list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {MASTER}] [get_bd_cells axi_vip_1]
 
 set_property -dict [list CONFIG.Input_Data_Width {32} CONFIG.Output_Data_Width {32} CONFIG.Reset_Pin {false} CONFIG.Reset_Type {Asynchronous_Reset} CONFIG.Use_Dout_Reset {false} CONFIG.Almost_Full_Flag {true}] [get_bd_cells fifo_generator_t0]
 set_property -dict [list CONFIG.Input_Data_Width {32} CONFIG.Output_Data_Width {32} CONFIG.Reset_Pin {false} CONFIG.Reset_Type {Asynchronous_Reset} CONFIG.Use_Dout_Reset {false} CONFIG.Almost_Full_Flag {true}] [get_bd_cells fifo_generator_t1]
@@ -69,13 +72,15 @@ connect_bd_net [get_bd_ports scan_enable] [get_bd_pins t0/scan_enable]
 
 connect_bd_net [get_bd_ports aclk] [get_bd_pins t0/aclk]
 connect_bd_net [get_bd_ports aresetn] [get_bd_pins t0/aresetn]
+connect_bd_net [get_bd_ports aclk] [get_bd_pins axi_vip_1/aclk]
+connect_bd_net [get_bd_ports aresetn] [get_bd_pins axi_vip_1/aresetn]
 #connect_bd_net [get_bd_ports aclk] [get_bd_pins axi_vip_0/aclk]
 #connect_bd_net [get_bd_ports aresetn] [get_bd_pins axi_vip_0/aresetn]
 connect_bd_net [get_bd_ports aclk] [get_bd_pins fifo_generator_t0/clk]
 connect_bd_net [get_bd_ports aclk] [get_bd_pins fifo_generator_t1/clk]
 
-connect_bd_intf_net [get_bd_intf_pins axi_vip_0/M_AXI] [get_bd_intf_pins t0/s00_axi]
 connect_bd_intf_net [get_bd_intf_pins axi_vip_0/S_AXI] [get_bd_intf_pins t0/m00_axi]
+connect_bd_intf_net [get_bd_intf_pins axi_vip_1/M_AXI] [get_bd_intf_pins t0/s00_axi]
 
 connect_bd_net [get_bd_pins fifo_generator_t0/almost_full] [get_bd_pins t0/almost_full_t0]
 connect_bd_net [get_bd_pins fifo_generator_t0/din] [get_bd_pins t0/data_in_t0]

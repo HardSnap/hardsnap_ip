@@ -322,7 +322,7 @@ begin
         RUN:
           if( almost_full == 1'b1)
             state = INIT_WRITE;
-          else if( empty == 1'b0)
+          else if( empty == 1'b1)
 	          state  <= INIT_READ;
         INIT_WRITE:
           begin
