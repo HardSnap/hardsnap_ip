@@ -14,13 +14,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="274319240fs"></ZoomStartTime>
-      <ZoomEndTime time="422403806fs"></ZoomEndTime>
-      <Cursor1Time time="305687000fs"></Cursor1Time>
+      <ZoomStartTime time="321600000fs"></ZoomStartTime>
+      <ZoomEndTime time="566800001fs"></ZoomEndTime>
+      <Cursor1Time time="375000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="251"></NameColumnWidth>
-      <ValueColumnWidth column_width="288"></ValueColumnWidth>
+      <ValueColumnWidth column_width="280"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject type="logic" fp_name="/testbench/aclk">
@@ -125,13 +125,13 @@
          <obj_property name="ObjectShortName">state[2:0]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_input_index">
-         <obj_property name="ElementShortName">scan_input_index[4:0]</obj_property>
-         <obj_property name="ObjectShortName">scan_input_index[4:0]</obj_property>
+         <obj_property name="ElementShortName">scan_input_index[5:0]</obj_property>
+         <obj_property name="ObjectShortName">scan_input_index[5:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_output_index">
-         <obj_property name="ElementShortName">scan_output_index[4:0]</obj_property>
-         <obj_property name="ObjectShortName">scan_output_index[4:0]</obj_property>
+         <obj_property name="ElementShortName">scan_output_index[5:0]</obj_property>
+         <obj_property name="ObjectShortName">scan_output_index[5:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
@@ -378,6 +378,14 @@
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_RREADY">
          <obj_property name="ElementShortName">M_AXI_RREADY</obj_property>
          <obj_property name="ObjectShortName">M_AXI_RREADY</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/pending_read">
+         <obj_property name="ElementShortName">pending_read</obj_property>
+         <obj_property name="ObjectShortName">pending_read</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/pending_write">
+         <obj_property name="ElementShortName">pending_write</obj_property>
+         <obj_property name="ObjectShortName">pending_write</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>
