@@ -14,15 +14,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="237701000fs"></ZoomStartTime>
-      <ZoomEndTime time="311901001fs"></ZoomEndTime>
-      <Cursor1Time time="245000000fs"></Cursor1Time>
+      <ZoomStartTime time="274319240fs"></ZoomStartTime>
+      <ZoomEndTime time="422403806fs"></ZoomEndTime>
+      <Cursor1Time time="305687000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="251"></NameColumnWidth>
-      <ValueColumnWidth column_width="330"></ValueColumnWidth>
+      <ValueColumnWidth column_width="288"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="14" />
+   <WVObjectSize size="12" />
    <wvobject type="logic" fp_name="/testbench/aclk">
       <obj_property name="ElementShortName">aclk</obj_property>
       <obj_property name="ObjectShortName">aclk</obj_property>
@@ -30,14 +30,6 @@
    <wvobject type="logic" fp_name="/testbench/aresetn">
       <obj_property name="ElementShortName">aresetn</obj_property>
       <obj_property name="ObjectShortName">aresetn</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench/scan_ck_enable">
-      <obj_property name="ElementShortName">scan_ck_enable</obj_property>
-      <obj_property name="ObjectShortName">scan_ck_enable</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/testbench/scan_enable">
-      <obj_property name="ElementShortName">scan_enable</obj_property>
-      <obj_property name="ObjectShortName">scan_enable</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/testbench/scan_input">
       <obj_property name="ElementShortName">scan_input</obj_property>
@@ -66,7 +58,6 @@
    <wvobject type="group" fp_name="group17">
       <obj_property name="label">AXI_SLAVE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_slave_inst/address_src">
          <obj_property name="ElementShortName">address_src[31:0]</obj_property>
          <obj_property name="ObjectShortName">address_src[31:0]</obj_property>
@@ -92,10 +83,42 @@
       <obj_property name="label">SCAN</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/rd_en">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/data_out">
+         <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/almost_full">
+         <obj_property name="ElementShortName">almost_full</obj_property>
+         <obj_property name="ObjectShortName">almost_full</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/wr_en">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/data_in">
+         <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/empty">
+         <obj_property name="ElementShortName">empty</obj_property>
+         <obj_property name="ObjectShortName">empty</obj_property>
+      </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/length">
          <obj_property name="ElementShortName">length[15:0]</obj_property>
          <obj_property name="ObjectShortName">length[15:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/scan_ck_enable">
+         <obj_property name="ElementShortName">scan_ck_enable</obj_property>
+         <obj_property name="ObjectShortName">scan_ck_enable</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/scan_enable">
+         <obj_property name="ElementShortName">scan_enable</obj_property>
+         <obj_property name="ObjectShortName">scan_enable</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/state">
          <obj_property name="ElementShortName">state[2:0]</obj_property>
@@ -104,14 +127,19 @@
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_input_index">
          <obj_property name="ElementShortName">scan_input_index[4:0]</obj_property>
          <obj_property name="ObjectShortName">scan_input_index[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_output_index">
          <obj_property name="ElementShortName">scan_output_index[4:0]</obj_property>
          <obj_property name="ObjectShortName">scan_output_index[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scanned_length">
          <obj_property name="ElementShortName">scanned_length[31:0]</obj_property>
          <obj_property name="ObjectShortName">scanned_length[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_output_reg">
          <obj_property name="ElementShortName">scan_output_reg[31:0]</obj_property>
@@ -129,30 +157,53 @@
    <wvobject type="group" fp_name="group25">
       <obj_property name="label">FIFO</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
-      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/rd_en">
-         <obj_property name="ElementShortName">rd_en</obj_property>
-         <obj_property name="ObjectShortName">rd_en</obj_property>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/data_in_t1">
+         <obj_property name="ElementShortName">data_in_t1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_t1[31:0]</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/data_in">
-         <obj_property name="ElementShortName">data_in[31:0]</obj_property>
-         <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/almost_full_t1">
+         <obj_property name="ElementShortName">almost_full_t1</obj_property>
+         <obj_property name="ObjectShortName">almost_full_t1</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/almost_full">
-         <obj_property name="ElementShortName">almost_full</obj_property>
-         <obj_property name="ObjectShortName">almost_full</obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/empty_t1">
+         <obj_property name="ElementShortName">empty_t1</obj_property>
+         <obj_property name="ObjectShortName">empty_t1</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/wr_en">
-         <obj_property name="ElementShortName">wr_en</obj_property>
-         <obj_property name="ObjectShortName">wr_en</obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/rd_en_t1">
+         <obj_property name="ElementShortName">rd_en_t1</obj_property>
+         <obj_property name="ObjectShortName">rd_en_t1</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/data_out">
-         <obj_property name="ElementShortName">data_out[31:0]</obj_property>
-         <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/wr_en_t1">
+         <obj_property name="ElementShortName">wr_en_t1</obj_property>
+         <obj_property name="ObjectShortName">wr_en_t1</obj_property>
       </wvobject>
-      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/empty">
-         <obj_property name="ElementShortName">empty</obj_property>
-         <obj_property name="ObjectShortName">empty</obj_property>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/data_out_t1">
+         <obj_property name="ElementShortName">data_out_t1[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_t1[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/empty_t0">
+         <obj_property name="ElementShortName">empty_t0</obj_property>
+         <obj_property name="ObjectShortName">empty_t0</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/data_in_t0">
+         <obj_property name="ElementShortName">data_in_t0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in_t0[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/almost_full_t0">
+         <obj_property name="ElementShortName">almost_full_t0</obj_property>
+         <obj_property name="ObjectShortName">almost_full_t0</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/rd_en_t0">
+         <obj_property name="ElementShortName">rd_en_t0</obj_property>
+         <obj_property name="ObjectShortName">rd_en_t0</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/wr_en_t0">
+         <obj_property name="ElementShortName">wr_en_t0</obj_property>
+         <obj_property name="ObjectShortName">wr_en_t0</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/data_out_t0">
+         <obj_property name="ElementShortName">data_out_t0[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out_t0[31:0]</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/start">
          <obj_property name="ElementShortName">start</obj_property>
@@ -199,22 +250,6 @@
          <obj_property name="ElementShortName">start_single_read</obj_property>
          <obj_property name="ObjectShortName">start_single_read</obj_property>
       </wvobject>
-      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/read_data">
-         <obj_property name="ElementShortName">read_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">read_data[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/data">
-         <obj_property name="ElementShortName">data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">data[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/address">
-         <obj_property name="ElementShortName">address[31:0]</obj_property>
-         <obj_property name="ObjectShortName">address[31:0]</obj_property>
-      </wvobject>
-      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/wr_en_reg">
-         <obj_property name="ElementShortName">wr_en_reg</obj_property>
-         <obj_property name="ObjectShortName">wr_en_reg</obj_property>
-      </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/dst_index">
          <obj_property name="ElementShortName">dst_index[31:0]</obj_property>
          <obj_property name="ObjectShortName">dst_index[31:0]</obj_property>
@@ -234,6 +269,115 @@
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/init_txn_pulse">
          <obj_property name="ElementShortName">init_txn_pulse</obj_property>
          <obj_property name="ObjectShortName">init_txn_pulse</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/dst_index">
+         <obj_property name="ElementShortName">dst_index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">dst_index[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/src_index">
+         <obj_property name="ElementShortName">src_index[31:0]</obj_property>
+         <obj_property name="ObjectShortName">src_index[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/wr_en">
+         <obj_property name="ElementShortName">wr_en</obj_property>
+         <obj_property name="ObjectShortName">wr_en</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/rd_en">
+         <obj_property name="ElementShortName">rd_en</obj_property>
+         <obj_property name="ObjectShortName">rd_en</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/data_out">
+         <obj_property name="ElementShortName">data_out[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_out[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/data_in">
+         <obj_property name="ElementShortName">data_in[31:0]</obj_property>
+         <obj_property name="ObjectShortName">data_in[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ACLK">
+         <obj_property name="ElementShortName">M_AXI_ACLK</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ACLK</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ARESETN">
+         <obj_property name="ElementShortName">M_AXI_ARESETN</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ARESETN</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_AWADDR">
+         <obj_property name="ElementShortName">M_AXI_AWADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_AWADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_AWPROT">
+         <obj_property name="ElementShortName">M_AXI_AWPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_AWPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_AWVALID">
+         <obj_property name="ElementShortName">M_AXI_AWVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_AWVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_AWREADY">
+         <obj_property name="ElementShortName">M_AXI_AWREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_AWREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_WDATA">
+         <obj_property name="ElementShortName">M_AXI_WDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_WDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_WSTRB">
+         <obj_property name="ElementShortName">M_AXI_WSTRB[3:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_WSTRB[3:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_WVALID">
+         <obj_property name="ElementShortName">M_AXI_WVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_WVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_WREADY">
+         <obj_property name="ElementShortName">M_AXI_WREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_WREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_BRESP">
+         <obj_property name="ElementShortName">M_AXI_BRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_BRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_BVALID">
+         <obj_property name="ElementShortName">M_AXI_BVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_BVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_BREADY">
+         <obj_property name="ElementShortName">M_AXI_BREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_BREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ARADDR">
+         <obj_property name="ElementShortName">M_AXI_ARADDR[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ARADDR[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ARPROT">
+         <obj_property name="ElementShortName">M_AXI_ARPROT[2:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ARPROT[2:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ARVALID">
+         <obj_property name="ElementShortName">M_AXI_ARVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ARVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_ARREADY">
+         <obj_property name="ElementShortName">M_AXI_ARREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_ARREADY</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_RDATA">
+         <obj_property name="ElementShortName">M_AXI_RDATA[31:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_RDATA[31:0]</obj_property>
+      </wvobject>
+      <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_RRESP">
+         <obj_property name="ElementShortName">M_AXI_RRESP[1:0]</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_RRESP[1:0]</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_RVALID">
+         <obj_property name="ElementShortName">M_AXI_RVALID</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_RVALID</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/M_AXI_RREADY">
+         <obj_property name="ElementShortName">M_AXI_RREADY</obj_property>
+         <obj_property name="ObjectShortName">M_AXI_RREADY</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

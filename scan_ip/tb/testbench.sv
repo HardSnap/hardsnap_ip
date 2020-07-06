@@ -105,6 +105,7 @@ initial begin
     #175ns
     aresetn = 1;
 
+    slv_mem_agent.mem_model.set_default_memory_value(32'hAAAAAAAF);
     //backdoor_mem_write_from_file("/usr/bin/ls", 32'H0000_0000);
 
     // use the vip axi master to configure the scan ip

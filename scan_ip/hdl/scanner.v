@@ -134,10 +134,10 @@
     .address_dst(address_dst),
     .length(length),
     //FIFO
-    .rd_en(rd_en_t1),
+    .wr_en(wr_en_t1),
     .data_in(data_in_t1),
     .almost_full(almost_full_t1),
-    .wr_en(wr_en_t0),
+    .rd_en(rd_en_t0),
     .data_out(data_out_t0),
     .empty(empty_t0),
     //AXI Master
@@ -169,10 +169,10 @@
 	  .aclk(aclk),
 	  .aresetn(aresetn),
     // FIFO
-    .rd_en(rd_en_t0),
+    .wr_en(wr_en_t0),
     .data_in(data_in_t0),
     .almost_full(almost_full_t0),
-    .wr_en(wr_en_t1),
+    .rd_en(rd_en_t1),
     .data_out(data_out_t1),
     .empty(empty_t1),
     // User-configuration
