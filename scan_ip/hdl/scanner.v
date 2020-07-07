@@ -179,7 +179,6 @@
     // User-configuration
     .start(start),
     .length(length),
-    //.done(done),
     // Scan Signals
     .scan_output(scan_output),
     .scan_input(scan_input),
