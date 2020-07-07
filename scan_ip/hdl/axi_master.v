@@ -7,6 +7,7 @@ module axi_master #
 )
 (
   input wire start,
+  output reg done,
 
   input wire [31:0] address_dst,
   input wire [31:0] address_src,
@@ -77,7 +78,6 @@ reg [31:0] src_index;
 wire  	init_txn_pulse;
 wire  	write_resp_error;
 wire  	read_resp_error;
-
 // I/O Connections assignments
 
 assign M_AXI_AWADDR	= address_dst + dst_index;
@@ -312,6 +312,7 @@ begin
       read_issued        <= 1'b0;                                                      
       dst_index          <= 32'b0;
       src_index          <= 32'b0;
+      done               <= 1'b0;
     end
   else
     begin
@@ -321,6 +322,7 @@ begin
             state       <= RUN;
             dst_index   <= 32'b0;
             src_index   <= 32'b0;
+            done        <= 1'b0;
           end
         RUN:
           if( empty == 1'b0 && pending_write == 1'b1)
@@ -357,8 +359,10 @@ begin
         DONE:
           if( pending_read || pending_write)
             state <= RUN;
-          else
+          else begin
             state <= IDLE;
+            done  <= 1'b1;
+          end
         default:
             state  <= IDLE;
       endcase

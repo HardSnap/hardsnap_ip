@@ -66,7 +66,7 @@ reg [127:0] big_reg;
 always @(posedge aclk, posedge aresetn)
 begin
   if(aresetn == 1'b0)
-    big_reg = 32'b0;
+    big_reg = 128'HBBBBBBBF_BBBBBBBF_BBBBBBBF_BBBBBBBF;
   else begin
     if(scan_enable == 1'b1) begin
       if(scan_ck_enable == 1'b1)
@@ -110,7 +110,7 @@ initial begin
 
     // use the vip axi master to configure the scan ip
     #2ns
-    master_agent.AXI4LITE_WRITE_BURST(REG_LENGTH, prot, 32'D129, resp);
+    master_agent.AXI4LITE_WRITE_BURST(REG_LENGTH, prot, 32'D128, resp);
     #2ns
     master_agent.AXI4LITE_WRITE_BURST(REG_SNP1_ADDR, prot, 32'H0000_0000,resp);
     #2ns
@@ -120,7 +120,18 @@ initial begin
     #2ns
     master_agent.AXI4LITE_WRITE_BURST(REG_START_ADDR, prot, 32'D0, resp);
 
-    //wait(DUT.top_i.t0.inst.axi_slave.axi_slave_inst.done);
+    wait(DUT.top_i.t0.inst.done);
+
+    #2ns
+    master_agent.AXI4LITE_WRITE_BURST(REG_SNP1_ADDR, prot, 32'H0000_1000,resp);
+    #2ns
+    master_agent.AXI4LITE_WRITE_BURST(REG_SNP2_ADDR, prot, 32'H0000_0000, resp);
+    #2ns
+    master_agent.AXI4LITE_WRITE_BURST(REG_START_ADDR, prot, 32'D1, resp);
+    #2ns
+    master_agent.AXI4LITE_WRITE_BURST(REG_START_ADDR, prot, 32'D0, resp);
+
+    wait(DUT.top_i.t0.inst.done);
 
     /*
     top_axi_vip_0_0_passthrough.AXI4LITE_WRITE_BURST(SCANIP_START+32'D0, prot, 32'H00000000, resp);

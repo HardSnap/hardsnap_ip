@@ -129,6 +129,7 @@
 		.C_M_AXI_ADDR_WIDTH(C_M00_AXI_ADDR_WIDTH),
 		.C_M_AXI_DATA_WIDTH(C_M00_AXI_DATA_WIDTH)
 	) axi_master_inst (
+    .done(done),
 		.start(start_pulse),
     .address_src(address_src),
     .address_dst(address_dst),
@@ -178,7 +179,7 @@
     // User-configuration
     .start(start),
     .length(length),
-    .done(done),
+    //.done(done),
     // Scan Signals
     .scan_output(scan_output),
     .scan_input(scan_input),

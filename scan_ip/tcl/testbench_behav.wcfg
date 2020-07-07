@@ -14,13 +14,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="749320000fs"></ZoomStartTime>
-      <ZoomEndTime time="934033375fs"></ZoomEndTime>
-      <Cursor1Time time="798989000fs"></Cursor1Time>
+      <ZoomStartTime time="740800000fs"></ZoomStartTime>
+      <ZoomEndTime time="2110800001fs"></ZoomEndTime>
+      <Cursor1Time time="1628333000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="251"></NameColumnWidth>
-      <ValueColumnWidth column_width="216"></ValueColumnWidth>
+      <ValueColumnWidth column_width="204"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject type="logic" fp_name="/testbench/aclk">
@@ -145,16 +145,20 @@
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_output_reg">
-         <obj_property name="ElementShortName">scan_output_reg[31:0]</obj_property>
-         <obj_property name="ObjectShortName">scan_output_reg[31:0]</obj_property>
+         <obj_property name="ElementShortName">scan_output_reg[0:31]</obj_property>
+         <obj_property name="ObjectShortName">scan_output_reg[0:31]</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_input_reg">
-         <obj_property name="ElementShortName">scan_input_reg[31:0]</obj_property>
-         <obj_property name="ObjectShortName">scan_input_reg[31:0]</obj_property>
+         <obj_property name="ElementShortName">scan_input_reg[0:31]</obj_property>
+         <obj_property name="ObjectShortName">scan_input_reg[0:31]</obj_property>
       </wvobject>
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/chunck_done">
          <obj_property name="ElementShortName">chunck_done</obj_property>
          <obj_property name="ObjectShortName">chunck_done</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/done">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
       </wvobject>
    </wvobject>
    <wvobject type="group" fp_name="group25">
@@ -220,6 +224,15 @@
    <wvobject type="group" fp_name="group42">
       <obj_property name="label">AXI_MASTER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/done">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
+      <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/done">
+         <obj_property name="ElementShortName">done</obj_property>
+         <obj_property name="ObjectShortName">done</obj_property>
+      </wvobject>
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/start">
          <obj_property name="ElementShortName">start</obj_property>
          <obj_property name="ObjectShortName">start</obj_property>

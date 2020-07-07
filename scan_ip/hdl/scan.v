@@ -16,8 +16,8 @@ module scan(
   input wire empty,
 
   input wire start,
-  input wire [15:0] length,
-  output wire done
+  input wire [15:0] length
+  //output wire done
 );
 
 parameter [2:0] IDLE  = 3'b001,//1
@@ -33,10 +33,11 @@ parameter [2:0] IDLE  = 3'b001,//1
   reg [5:0] scan_input_index;
   reg [5:0] scan_output_index;
   reg [31:0] scanned_length;
-  reg [31:0] scan_output_reg;
-  reg [31:0] scan_input_reg;
+  reg [0:31] scan_output_reg;
+  reg [0:31] scan_input_reg;
 
   wire chunck_done;
+  wire done;
 
   // increment the scan_output_index and flop the scan_output signal
   always @(posedge aclk, posedge aresetn)
@@ -91,12 +92,12 @@ parameter [2:0] IDLE  = 3'b001,//1
   always @(posedge aclk, posedge aresetn)
   begin
     if( aresetn == 1'b0 )begin
-      scanned_length   <= 32'D1;
+      scanned_length   <= 32'D0;
     end else begin
       if( state == SCAN_HIGH)
         scanned_length   <= scanned_length + 1;
       else if( state == IDLE)
-        scanned_length <= 32'D1;
+        scanned_length <= 32'D0;
       else
         scanned_length <= scanned_length;
     end
