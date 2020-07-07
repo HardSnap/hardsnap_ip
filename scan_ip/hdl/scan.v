@@ -26,7 +26,8 @@ parameter [2:0] IDLE  = 3'b001,//1
   SCAN_HIGH           = 3'b100,//4
   PUSH                = 3'b101,//5
   DONE                = 3'b110,//6
-  PREPARE_POP         = 3'b111;//7
+  PREPARE_POP         = 3'b111,//7
+  WAIT_POP            = 3'b000;//0
 
   reg [2:0] state;
   reg [5:0] scan_input_index;
@@ -44,7 +45,7 @@ parameter [2:0] IDLE  = 3'b001,//1
       scan_output_index <= 6'b0;
       scan_output_reg   <= 32'b0;
     end else begin
-      if( state == SCAN_LOW) begin
+      if( state == SCAN_LOW && scan_output_index[5] == 1'b0 ) begin
         scan_output_reg[scan_output_index]   <= scan_output;
         scan_output_index                    <= scan_output_index + 1;
       end else if( state == PREPARE_POP)
@@ -64,7 +65,7 @@ parameter [2:0] IDLE  = 3'b001,//1
     if( aresetn == 1'b0) begin
       scan_input_index <= 6'b0;
     end else begin
-      if( state == SCAN_HIGH)
+      if( state == SCAN_HIGH && scan_input_index != 6'D31 )
         scan_input_index = scan_input_index + 1;
       else if( state == PREPARE_POP)
         scan_input_index <= 6'b0;
@@ -79,7 +80,7 @@ parameter [2:0] IDLE  = 3'b001,//1
     if( aresetn == 1'b0 )begin
       scan_input_reg   <= 32'b0;
     end else begin
-      if( state == POP )
+      if( state == WAIT_POP )
         scan_input_reg   <= data_out;
     end
   end
@@ -121,6 +122,8 @@ parameter [2:0] IDLE  = 3'b001,//1
           if( empty == 1'b0)
             state = POP;
         POP:
+          state = WAIT_POP;
+        WAIT_POP:
           state = SCAN_LOW;
         SCAN_LOW:
           if( done == 1'b1)
@@ -163,6 +166,13 @@ parameter [2:0] IDLE  = 3'b001,//1
         scan_ck_enable = 1'b0;
         scan_enable    = 1'b1;
         rd_en          = 1'b1;
+        wr_en          = 1'b0;
+      end
+      WAIT_POP:
+      begin
+        scan_ck_enable = 1'b0;
+        scan_enable    = 1'b1;
+        rd_en          = 1'b0;
         wr_en          = 1'b0;
       end
       PUSH:

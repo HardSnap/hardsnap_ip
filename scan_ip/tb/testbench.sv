@@ -61,7 +61,7 @@ top_axi_vip_1_0_mst_t master_agent;
 xil_axi_prot_t  prot = 0;
 xil_axi_resp_t  resp;
 
-reg [128:0] big_reg;
+reg [127:0] big_reg;
 
 always @(posedge aclk, posedge aresetn)
 begin
@@ -70,7 +70,7 @@ begin
   else begin
     if(scan_enable == 1'b1) begin
       if(scan_ck_enable == 1'b1)
-        big_reg <= {big_reg[127:1], scan_input};
+        big_reg[127:0] <= {big_reg[126:0], scan_input};
     end else begin 
       big_reg <= big_reg;
     end 
@@ -110,7 +110,7 @@ initial begin
 
     // use the vip axi master to configure the scan ip
     #2ns
-    master_agent.AXI4LITE_WRITE_BURST(REG_LENGTH, prot, 32'D128, resp);
+    master_agent.AXI4LITE_WRITE_BURST(REG_LENGTH, prot, 32'D129, resp);
     #2ns
     master_agent.AXI4LITE_WRITE_BURST(REG_SNP1_ADDR, prot, 32'H0000_0000,resp);
     #2ns

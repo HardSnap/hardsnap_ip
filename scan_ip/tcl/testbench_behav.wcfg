@@ -14,13 +14,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="321600000fs"></ZoomStartTime>
-      <ZoomEndTime time="566800001fs"></ZoomEndTime>
-      <Cursor1Time time="375000000fs"></Cursor1Time>
+      <ZoomStartTime time="749320000fs"></ZoomStartTime>
+      <ZoomEndTime time="934033375fs"></ZoomEndTime>
+      <Cursor1Time time="798989000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="251"></NameColumnWidth>
-      <ValueColumnWidth column_width="280"></ValueColumnWidth>
+      <ValueColumnWidth column_width="216"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="12" />
    <wvobject type="logic" fp_name="/testbench/aclk">
@@ -48,8 +48,9 @@
       <obj_property name="ObjectShortName">resp[1:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/testbench/big_reg">
-      <obj_property name="ElementShortName">big_reg[128:0]</obj_property>
-      <obj_property name="ObjectShortName">big_reg[128:0]</obj_property>
+      <obj_property name="ElementShortName">big_reg[127:0]</obj_property>
+      <obj_property name="ObjectShortName">big_reg[127:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/testbench/reg_rd_data">
       <obj_property name="ElementShortName">reg_rd_data[31:0]</obj_property>
@@ -128,6 +129,8 @@
          <obj_property name="ElementShortName">scan_input_index[5:0]</obj_property>
          <obj_property name="ObjectShortName">scan_input_index[5:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject type="array" fp_name="/testbench/DUT/top_i/t0/inst/scan_inst/scan_output_index">
          <obj_property name="ElementShortName">scan_output_index[5:0]</obj_property>
@@ -217,7 +220,6 @@
    <wvobject type="group" fp_name="group42">
       <obj_property name="label">AXI_MASTER</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject type="logic" fp_name="/testbench/DUT/top_i/t0/inst/axi_master_inst/start">
          <obj_property name="ElementShortName">start</obj_property>
          <obj_property name="ObjectShortName">start</obj_property>
